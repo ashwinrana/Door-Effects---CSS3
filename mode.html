@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0px;
+        }
+        
+        h2:nth-child(1) {
+            background-color: darkcyan;
+            padding: 15px 0px;
+            margin-top: 0px;
+            text-align: center;
+            color: #fff;
+        }
+        
+        .open-button {
+            padding: 10px 20px;
+            font-family: Aller;
+            border-radius: 3px;
+            background-color: crimson;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            width: 80%;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+        
+        @-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+        
+        @keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+        
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #2c3e50;
+            color: white;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        
+        .modal-body {
+            padding: 8px 16px;
+        }
+        
+        .modal-footer {
+            padding: 9px 16px;
+            background-color: #ecf0f1;
+            color: white;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        
+        button {
+            font-family: sans-serif;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 3px;
+            transition: all linear 0.2s;
+            -moz-transition: all linear 0.2s;
+            -webkit-transition: all linear 0.2s;
+        }
+        
+        button:nth-child(1) {
+            margin-right: 5px;
+        }
+        
+        button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h2>Custom animated Modal with options</h2>
+    <button id="myBtn" class="open-button">Delete</button>
+    <!-- <i class="fa fa-times-circle"></i> -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header"> <span class="close"><i class="fa fa-times-circle " aria-hidden="true"></i>
+</span>
+                <h2 style="margin: 10px 0px;">Do you really want to delete ?</h2> </div>
+            <div class="modal-body">
+                <p id="su-message"> Are your sure want to delete Brother Documents ?</p>
+            </div>
+            <div class="modal-footer"> <span><button onclick="CanC()">Cancel</button><button onclick="Dele()">Process</button></span> </div>
+        </div>
+    </div>
+    <script>
+        var modal = document.getElementById('myModal');
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        $(document).keyup(function (e) {
+            if (e.keyCode == 27) {
+                modal.style.display = "none";
+            }
+        });
+        function Dele() {
+            document.getElementById("su-message").innerHTML = "Content Deleted Successfully !";
+        }
+        function CanC() {
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
